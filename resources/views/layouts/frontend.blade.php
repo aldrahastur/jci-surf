@@ -92,11 +92,6 @@
                                             {{ trans('cruds.tag.title') }}
                                         </a>
                                     @endcan
-                                    @can('location_access')
-                                        <a class="dropdown-item ml-3" href="{{ route('frontend.locations.index') }}">
-                                            {{ trans('cruds.location.title') }}
-                                        </a>
-                                    @endcan
                                     @can('listing_access')
                                         <a class="dropdown-item ml-3" href="{{ route('frontend.listings.index') }}">
                                             {{ trans('cruds.listing.title') }}
@@ -137,6 +132,11 @@
                                             {{ trans('cruds.user.title') }}
                                         </a>
                                     @endcan
+                                    @can('jci_chapter_access')
+                                        <a class="dropdown-item ml-3" href="{{ route('frontend.jci-chapters.index') }}">
+                                            {{ trans('cruds.jciChapter.title') }}
+                                        </a>
+                                    @endcan
                                     @can('user_alert_access')
                                         <a class="dropdown-item" href="{{ route('frontend.user-alerts.index') }}">
                                             {{ trans('cruds.userAlert.title') }}
@@ -160,6 +160,16 @@
                                     @can('task_access')
                                         <a class="dropdown-item ml-3" href="{{ route('frontend.tasks.index') }}">
                                             {{ trans('cruds.task.title') }}
+                                        </a>
+                                    @endcan
+                                    @can('country_access')
+                                        <a class="dropdown-item" href="{{ route('frontend.countries.index') }}">
+                                            {{ trans('cruds.country.title') }}
+                                        </a>
+                                    @endcan
+                                    @can('city_access')
+                                        <a class="dropdown-item" href="{{ route('frontend.cities.index') }}">
+                                            {{ trans('cruds.city.title') }}
                                         </a>
                                     @endcan
 

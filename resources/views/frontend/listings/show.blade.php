@@ -44,6 +44,14 @@
                                         @endforeach
                                     </td>
                                 </tr>
+                                <tr>
+                                    <th>
+                                        {{ trans('cruds.listing.fields.country') }}
+                                    </th>
+                                    <td>
+                                        {{ $listing->country->name ?? '' }}
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
                         <div class="form-group">

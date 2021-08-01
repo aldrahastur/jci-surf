@@ -34,6 +34,18 @@
                 <span class="help-block">{{ trans('cruds.listing.fields.tag_helper') }}</span>
             </div>
             <div class="form-group">
+                <label class="required" for="country_id">{{ trans('cruds.listing.fields.country') }}</label>
+                <select class="form-control select2 {{ $errors->has('country') ? 'is-invalid' : '' }}" name="country_id" id="country_id" required>
+                    @foreach($countries as $id => $entry)
+                        <option value="{{ $id }}" {{ old('country_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('country'))
+                    <span class="text-danger">{{ $errors->first('country') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.listing.fields.country_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <button class="btn btn-danger" type="submit">
                     {{ trans('global.save') }}
                 </button>

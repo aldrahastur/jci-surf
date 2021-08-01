@@ -26,7 +26,7 @@
                     </a>
                 </li>
                 @can('directory_access')
-                    <li class="nav-item has-treeview {{ request()->is("admin/categories*") ? "menu-open" : "" }} {{ request()->is("admin/tags*") ? "menu-open" : "" }} {{ request()->is("admin/locations*") ? "menu-open" : "" }} {{ request()->is("admin/listings*") ? "menu-open" : "" }}">
+                    <li class="nav-item has-treeview {{ request()->is("admin/categories*") ? "menu-open" : "" }} {{ request()->is("admin/tags*") ? "menu-open" : "" }} {{ request()->is("admin/listings*") ? "menu-open" : "" }}">
                         <a class="nav-link nav-dropdown-toggle" href="#">
                             <i class="fa-fw nav-icon fas fa-bars">
 
@@ -57,18 +57,6 @@
                                         </i>
                                         <p>
                                             {{ trans('cruds.tag.title') }}
-                                        </p>
-                                    </a>
-                                </li>
-                            @endcan
-                            @can('location_access')
-                                <li class="nav-item">
-                                    <a href="{{ route("admin.locations.index") }}" class="nav-link {{ request()->is("admin/locations") || request()->is("admin/locations/*") ? "active" : "" }}">
-                                        <i class="fa-fw nav-icon fas fa-map-marker-alt">
-
-                                        </i>
-                                        <p>
-                                            {{ trans('cruds.location.title') }}
                                         </p>
                                     </a>
                                 </li>
@@ -128,7 +116,7 @@
                     </li>
                 @endcan
                 @can('user_management_access')
-                    <li class="nav-item has-treeview {{ request()->is("admin/permissions*") ? "menu-open" : "" }} {{ request()->is("admin/roles*") ? "menu-open" : "" }} {{ request()->is("admin/users*") ? "menu-open" : "" }} {{ request()->is("admin/audit-logs*") ? "menu-open" : "" }}">
+                    <li class="nav-item has-treeview {{ request()->is("admin/permissions*") ? "menu-open" : "" }} {{ request()->is("admin/roles*") ? "menu-open" : "" }} {{ request()->is("admin/users*") ? "menu-open" : "" }} {{ request()->is("admin/audit-logs*") ? "menu-open" : "" }} {{ request()->is("admin/jci-chapters*") ? "menu-open" : "" }}">
                         <a class="nav-link nav-dropdown-toggle" href="#">
                             <i class="fa-fw nav-icon fas fa-users">
 
@@ -183,6 +171,18 @@
                                         </i>
                                         <p>
                                             {{ trans('cruds.auditLog.title') }}
+                                        </p>
+                                    </a>
+                                </li>
+                            @endcan
+                            @can('jci_chapter_access')
+                                <li class="nav-item">
+                                    <a href="{{ route("admin.jci-chapters.index") }}" class="nav-link {{ request()->is("admin/jci-chapters") || request()->is("admin/jci-chapters/*") ? "active" : "" }}">
+                                        <i class="fa-fw nav-icon fas fa-cogs">
+
+                                        </i>
+                                        <p>
+                                            {{ trans('cruds.jciChapter.title') }}
                                         </p>
                                     </a>
                                 </li>
@@ -263,6 +263,30 @@
                                 </li>
                             @endcan
                         </ul>
+                    </li>
+                @endcan
+                @can('country_access')
+                    <li class="nav-item">
+                        <a href="{{ route("admin.countries.index") }}" class="nav-link {{ request()->is("admin/countries") || request()->is("admin/countries/*") ? "active" : "" }}">
+                            <i class="fa-fw nav-icon fas fa-flag">
+
+                            </i>
+                            <p>
+                                {{ trans('cruds.country.title') }}
+                            </p>
+                        </a>
+                    </li>
+                @endcan
+                @can('city_access')
+                    <li class="nav-item">
+                        <a href="{{ route("admin.cities.index") }}" class="nav-link {{ request()->is("admin/cities") || request()->is("admin/cities/*") ? "active" : "" }}">
+                            <i class="fa-fw nav-icon fas fa-cogs">
+
+                            </i>
+                            <p>
+                                {{ trans('cruds.city.title') }}
+                            </p>
+                        </a>
                     </li>
                 @endcan
                 @php($unread = \App\Models\QaTopic::unreadCount())

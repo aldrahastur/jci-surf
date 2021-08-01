@@ -73,6 +73,14 @@
                             @endforeach
                         </td>
                     </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.user.fields.jci_chapter') }}
+                        </th>
+                        <td>
+                            {{ $user->jci_chapter->name ?? '' }}
+                        </td>
+                    </tr>
                 </tbody>
             </table>
             <div class="form-group">

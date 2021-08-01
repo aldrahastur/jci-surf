@@ -13,6 +13,7 @@ class GlobalSearchController extends Controller
         'Location' => 'cruds.location.title',
         'Tag'      => 'cruds.tag.title',
         'Listing'  => 'cruds.listing.title',
+        'City'     => 'cruds.city.title',
     ];
 
     public function search(Request $request)

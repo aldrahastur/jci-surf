@@ -27,6 +27,10 @@ class StoreListingRequest extends FormRequest
             'tags' => [
                 'array',
             ],
+            'country_id' => [
+                'required',
+                'integer',
+            ],
         ];
     }
 }

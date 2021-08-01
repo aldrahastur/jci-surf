@@ -1,7 +1,5 @@
 <?php
 
-use App\Http\Controllers\Webhooks\SyncUserController;
-
 Route::view('/', 'welcome');
 Route::get('userVerification/{token}', 'UserVerificationController@approve')->name('userVerification');
 Auth::routes();
@@ -18,6 +16,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     // Users
     Route::delete('users/destroy', 'UsersController@massDestroy')->name('users.massDestroy');
+    Route::post('users/parse-csv-import', 'UsersController@parseCsvImport')->name('users.parseCsvImport');
+    Route::post('users/process-csv-import', 'UsersController@processCsvImport')->name('users.processCsvImport');
     Route::resource('users', 'UsersController');
 
     // Audit Logs
@@ -59,12 +59,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('categories/process-csv-import', 'CategoryController@processCsvImport')->name('categories.processCsvImport');
     Route::resource('categories', 'CategoryController');
 
-    // Locations
-    Route::delete('locations/destroy', 'LocationsController@massDestroy')->name('locations.massDestroy');
-    Route::post('locations/parse-csv-import', 'LocationsController@parseCsvImport')->name('locations.parseCsvImport');
-    Route::post('locations/process-csv-import', 'LocationsController@processCsvImport')->name('locations.processCsvImport');
-    Route::resource('locations', 'LocationsController');
-
     // Tags
     Route::delete('tags/destroy', 'TagsController@massDestroy')->name('tags.massDestroy');
     Route::post('tags/parse-csv-import', 'TagsController@parseCsvImport')->name('tags.parseCsvImport');
@@ -74,6 +68,20 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     // Listings
     Route::delete('listings/destroy', 'ListingsController@massDestroy')->name('listings.massDestroy');
     Route::resource('listings', 'ListingsController');
+
+    // Jci Chapter
+    Route::delete('jci-chapters/destroy', 'JciChapterController@massDestroy')->name('jci-chapters.massDestroy');
+    Route::post('jci-chapters/parse-csv-import', 'JciChapterController@parseCsvImport')->name('jci-chapters.parseCsvImport');
+    Route::post('jci-chapters/process-csv-import', 'JciChapterController@processCsvImport')->name('jci-chapters.processCsvImport');
+    Route::resource('jci-chapters', 'JciChapterController');
+
+    // Countries
+    Route::delete('countries/destroy', 'CountriesController@massDestroy')->name('countries.massDestroy');
+    Route::resource('countries', 'CountriesController');
+
+    // Cities
+    Route::delete('cities/destroy', 'CitiesController@massDestroy')->name('cities.massDestroy');
+    Route::resource('cities', 'CitiesController');
 
     Route::get('global-search', 'GlobalSearchController@search')->name('globalSearch');
     Route::get('messenger', 'MessengerController@index')->name('messenger.index');
@@ -144,10 +152,6 @@ Route::group(['as' => 'frontend.', 'namespace' => 'Frontend', 'middleware' => ['
     Route::delete('categories/destroy', 'CategoryController@massDestroy')->name('categories.massDestroy');
     Route::resource('categories', 'CategoryController');
 
-    // Locations
-    Route::delete('locations/destroy', 'LocationsController@massDestroy')->name('locations.massDestroy');
-    Route::resource('locations', 'LocationsController');
-
     // Tags
     Route::delete('tags/destroy', 'TagsController@massDestroy')->name('tags.massDestroy');
     Route::resource('tags', 'TagsController');
@@ -155,6 +159,18 @@ Route::group(['as' => 'frontend.', 'namespace' => 'Frontend', 'middleware' => ['
     // Listings
     Route::delete('listings/destroy', 'ListingsController@massDestroy')->name('listings.massDestroy');
     Route::resource('listings', 'ListingsController');
+
+    // Jci Chapter
+    Route::delete('jci-chapters/destroy', 'JciChapterController@massDestroy')->name('jci-chapters.massDestroy');
+    Route::resource('jci-chapters', 'JciChapterController');
+
+    // Countries
+    Route::delete('countries/destroy', 'CountriesController@massDestroy')->name('countries.massDestroy');
+    Route::resource('countries', 'CountriesController');
+
+    // Cities
+    Route::delete('cities/destroy', 'CitiesController@massDestroy')->name('cities.massDestroy');
+    Route::resource('cities', 'CitiesController');
 
     Route::get('frontend/profile', 'ProfileController@index')->name('profile.index');
     Route::post('frontend/profile', 'ProfileController@update')->name('profile.update');
@@ -170,5 +186,3 @@ Route::group(['namespace' => 'Auth', 'middleware' => ['auth', '2fa']], function 
         Route::get('two-factor/resend', 'TwoFactorController@resend')->name('twoFactor.resend');
     }
 });
-
-
