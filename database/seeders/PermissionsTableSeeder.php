@@ -232,70 +232,110 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 56,
-                'title' => 'location_create',
-            ],
-            [
-                'id'    => 57,
-                'title' => 'location_edit',
-            ],
-            [
-                'id'    => 58,
-                'title' => 'location_show',
-            ],
-            [
-                'id'    => 59,
-                'title' => 'location_delete',
-            ],
-            [
-                'id'    => 60,
-                'title' => 'location_access',
-            ],
-            [
-                'id'    => 61,
                 'title' => 'tag_create',
             ],
             [
-                'id'    => 62,
+                'id'    => 57,
                 'title' => 'tag_edit',
             ],
             [
-                'id'    => 63,
+                'id'    => 58,
                 'title' => 'tag_show',
             ],
             [
-                'id'    => 64,
+                'id'    => 59,
                 'title' => 'tag_delete',
             ],
             [
-                'id'    => 65,
+                'id'    => 60,
                 'title' => 'tag_access',
             ],
             [
-                'id'    => 66,
+                'id'    => 61,
                 'title' => 'directory_access',
             ],
             [
-                'id'    => 67,
+                'id'    => 62,
                 'title' => 'listing_create',
             ],
             [
-                'id'    => 68,
+                'id'    => 63,
                 'title' => 'listing_edit',
             ],
             [
-                'id'    => 69,
+                'id'    => 64,
                 'title' => 'listing_show',
             ],
             [
-                'id'    => 70,
+                'id'    => 65,
                 'title' => 'listing_delete',
             ],
             [
-                'id'    => 71,
+                'id'    => 66,
                 'title' => 'listing_access',
             ],
             [
+                'id'    => 67,
+                'title' => 'jci_chapter_create',
+            ],
+            [
+                'id'    => 68,
+                'title' => 'jci_chapter_edit',
+            ],
+            [
+                'id'    => 69,
+                'title' => 'jci_chapter_show',
+            ],
+            [
+                'id'    => 70,
+                'title' => 'jci_chapter_delete',
+            ],
+            [
+                'id'    => 71,
+                'title' => 'jci_chapter_access',
+            ],
+            [
                 'id'    => 72,
+                'title' => 'country_create',
+            ],
+            [
+                'id'    => 73,
+                'title' => 'country_edit',
+            ],
+            [
+                'id'    => 74,
+                'title' => 'country_show',
+            ],
+            [
+                'id'    => 75,
+                'title' => 'country_delete',
+            ],
+            [
+                'id'    => 76,
+                'title' => 'country_access',
+            ],
+            [
+                'id'    => 77,
+                'title' => 'city_create',
+            ],
+            [
+                'id'    => 78,
+                'title' => 'city_edit',
+            ],
+            [
+                'id'    => 79,
+                'title' => 'city_show',
+            ],
+            [
+                'id'    => 80,
+                'title' => 'city_delete',
+            ],
+            [
+                'id'    => 81,
+                'title' => 'city_access',
+            ],
+            [
+                'id'    => 82,
                 'title' => 'profile_password_edit',
             ],
         ];

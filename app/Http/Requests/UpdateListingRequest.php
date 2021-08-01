@@ -27,6 +27,10 @@ class UpdateListingRequest extends FormRequest
             'tags' => [
                 'array',
             ],
+            'country_id' => [
+                'required',
+                'integer',
+            ],
         ];
     }
 }

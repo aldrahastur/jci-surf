@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Traits\CsvImportTrait;
 use App\Http\Requests\MassDestroyUserRequest;
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
+use App\Models\JciChapter;
 use App\Models\Role;
 use App\Models\User;
 use Gate;
@@ -14,11 +16,13 @@ use Symfony\Component\HttpFoundation\Response;
 
 class UsersController extends Controller
 {
+    use CsvImportTrait;
+
     public function index()
     {
         abort_if(Gate::denies('user_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $users = User::with(['roles'])->get();
+        $users = User::with(['roles', 'jci_chapter'])->get();
 
         return view('frontend.users.index', compact('users'));
     }
@@ -29,7 +33,9 @@ class UsersController extends Controller
 
         $roles = Role::pluck('title', 'id');
 
-        return view('frontend.users.create', compact('roles'));
+        $jci_chapters = JciChapter::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        return view('frontend.users.create', compact('roles', 'jci_chapters'));
     }
 
     public function store(StoreUserRequest $request)
@@ -46,9 +52,11 @@ class UsersController extends Controller
 
         $roles = Role::pluck('title', 'id');
 
-        $user->load('roles');
+        $jci_chapters = JciChapter::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('frontend.users.edit', compact('roles', 'user'));
+        $user->load('roles', 'jci_chapter');
+
+        return view('frontend.users.edit', compact('roles', 'jci_chapters', 'user'));
     }
 
     public function update(UpdateUserRequest $request, User $user)
@@ -63,7 +71,7 @@ class UsersController extends Controller
     {
         abort_if(Gate::denies('user_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $user->load('roles', 'userUserAlerts');
+        $user->load('roles', 'jci_chapter', 'userUserAlerts');
 
         return view('frontend.users.show', compact('user'));
     }

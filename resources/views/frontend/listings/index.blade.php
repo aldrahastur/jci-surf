@@ -32,6 +32,9 @@
                                         {{ trans('cruds.listing.fields.tag') }}
                                     </th>
                                     <th>
+                                        {{ trans('cruds.listing.fields.country') }}
+                                    </th>
+                                    <th>
                                         &nbsp;
                                     </th>
                                 </tr>
@@ -49,6 +52,9 @@
                                             @foreach($listing->tags as $key => $item)
                                                 <span>{{ $item->name }}</span>
                                             @endforeach
+                                        </td>
+                                        <td>
+                                            {{ $listing->country->name ?? '' }}
                                         </td>
                                         <td>
                                             @can('listing_show')

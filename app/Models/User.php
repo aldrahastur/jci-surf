@@ -4,6 +4,7 @@ namespace App\Models;
 
 use \DateTimeInterface;
 use App\Notifications\VerifyUserNotification;
+use App\Traits\Auditable;
 use Carbon\Carbon;
 use Hash;
 use Illuminate\Auth\Notifications\ResetPassword;
@@ -18,6 +19,7 @@ class User extends Authenticatable
 {
     use SoftDeletes;
     use Notifiable;
+    use Auditable;
     use HasFactory;
 
     public $table = 'users';
@@ -38,6 +40,7 @@ class User extends Authenticatable
 
     protected $fillable = [
         'name',
+        'original_reference',
         'email',
         'email_verified_at',
         'password',
@@ -48,6 +51,7 @@ class User extends Authenticatable
         'two_factor_code',
         'remember_token',
         'created_at',
+        'jci_chapter_id',
         'updated_at',
         'deleted_at',
         'two_factor_expires_at',
@@ -144,6 +148,11 @@ class User extends Authenticatable
     public function roles()
     {
         return $this->belongsToMany(Role::class);
+    }
+
+    public function jci_chapter()
+    {
+        return $this->belongsTo(JciChapter::class, 'jci_chapter_id');
     }
 
     public function getTwoFactorExpiresAtAttribute($value)

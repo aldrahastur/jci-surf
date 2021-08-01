@@ -26,6 +26,7 @@ class Listing extends Model
 
     protected $fillable = [
         'name',
+        'country_id',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -34,6 +35,11 @@ class Listing extends Model
     public function tags()
     {
         return $this->belongsToMany(Tag::class);
+    }
+
+    public function country()
+    {
+        return $this->belongsTo(Country::class, 'country_id');
     }
 
     protected function serializeDate(DateTimeInterface $date)

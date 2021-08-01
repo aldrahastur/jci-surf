@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\MassDestroyListingRequest;
 use App\Http\Requests\StoreListingRequest;
 use App\Http\Requests\UpdateListingRequest;
+use App\Models\Country;
 use App\Models\Listing;
 use App\Models\Tag;
 use Gate;
@@ -18,7 +19,7 @@ class ListingsController extends Controller
     {
         abort_if(Gate::denies('listing_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $listings = Listing::with(['tags'])->get();
+        $listings = Listing::with(['tags', 'country'])->get();
 
         return view('frontend.listings.index', compact('listings'));
     }
@@ -29,7 +30,9 @@ class ListingsController extends Controller
 
         $tags = Tag::pluck('name', 'id');
 
-        return view('frontend.listings.create', compact('tags'));
+        $countries = Country::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        return view('frontend.listings.create', compact('tags', 'countries'));
     }
 
     public function store(StoreListingRequest $request)
@@ -46,9 +49,11 @@ class ListingsController extends Controller
 
         $tags = Tag::pluck('name', 'id');
 
-        $listing->load('tags');
+        $countries = Country::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('frontend.listings.edit', compact('tags', 'listing'));
+        $listing->load('tags', 'country');
+
+        return view('frontend.listings.edit', compact('tags', 'countries', 'listing'));
     }
 
     public function update(UpdateListingRequest $request, Listing $listing)
@@ -63,7 +68,7 @@ class ListingsController extends Controller
     {
         abort_if(Gate::denies('listing_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $listing->load('tags');
+        $listing->load('tags', 'country');
 
         return view('frontend.listings.show', compact('listing'));
     }

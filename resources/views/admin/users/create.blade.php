@@ -50,6 +50,18 @@
                 <span class="help-block">{{ trans('cruds.user.fields.roles_helper') }}</span>
             </div>
             <div class="form-group">
+                <label for="jci_chapter_id">{{ trans('cruds.user.fields.jci_chapter') }}</label>
+                <select class="form-control select2 {{ $errors->has('jci_chapter') ? 'is-invalid' : '' }}" name="jci_chapter_id" id="jci_chapter_id">
+                    @foreach($jci_chapters as $id => $entry)
+                        <option value="{{ $id }}" {{ old('jci_chapter_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('jci_chapter'))
+                    <span class="text-danger">{{ $errors->first('jci_chapter') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.user.fields.jci_chapter_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <button class="btn btn-danger" type="submit">
                     {{ trans('global.save') }}
                 </button>
