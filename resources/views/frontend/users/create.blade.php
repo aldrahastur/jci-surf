@@ -14,6 +14,26 @@
                         @method('POST')
                         @csrf
                         <div class="form-group">
+                            <label for="firstname">{{ trans('cruds.user.fields.firstname') }}</label>
+                            <input class="form-control" type="text" name="firstname" id="firstname" value="{{ old('firstname', '') }}">
+                            @if($errors->has('firstname'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('firstname') }}
+                                </div>
+                            @endif
+                            <span class="help-block">{{ trans('cruds.user.fields.firstname_helper') }}</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastname">{{ trans('cruds.user.fields.lastname') }}</label>
+                            <input class="form-control" type="text" name="lastname" id="lastname" value="{{ old('lastname', '') }}">
+                            @if($errors->has('lastname'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('lastname') }}
+                                </div>
+                            @endif
+                            <span class="help-block">{{ trans('cruds.user.fields.lastname_helper') }}</span>
+                        </div>
+                        <div class="form-group">
                             <label class="required" for="name">{{ trans('cruds.user.fields.name') }}</label>
                             <input class="form-control" type="text" name="name" id="name" value="{{ old('name', '') }}" required>
                             @if($errors->has('name'))

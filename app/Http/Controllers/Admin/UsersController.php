@@ -48,6 +48,12 @@ class UsersController extends Controller
             $table->editColumn('id', function ($row) {
                 return $row->id ? $row->id : '';
             });
+            $table->editColumn('firstname', function ($row) {
+                return $row->firstname ? $row->firstname : '';
+            });
+            $table->editColumn('lastname', function ($row) {
+                return $row->lastname ? $row->lastname : '';
+            });
             $table->editColumn('name', function ($row) {
                 return $row->name ? $row->name : '';
             });
@@ -55,9 +61,6 @@ class UsersController extends Controller
                 return $row->email ? $row->email : '';
             });
 
-            $table->editColumn('verified', function ($row) {
-                return '<input type="checkbox" disabled ' . ($row->verified ? 'checked' : null) . '>';
-            });
             $table->editColumn('two_factor', function ($row) {
                 return '<input type="checkbox" disabled ' . ($row->two_factor ? 'checked' : null) . '>';
             });
@@ -73,7 +76,7 @@ class UsersController extends Controller
                 return $row->jci_chapter ? $row->jci_chapter->name : '';
             });
 
-            $table->rawColumns(['actions', 'placeholder', 'verified', 'two_factor', 'roles', 'jci_chapter']);
+            $table->rawColumns(['actions', 'placeholder', 'two_factor', 'roles', 'jci_chapter']);
 
             return $table->make(true);
         }

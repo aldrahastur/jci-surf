@@ -30,6 +30,12 @@
                                         {{ trans('cruds.user.fields.id') }}
                                     </th>
                                     <th>
+                                        {{ trans('cruds.user.fields.firstname') }}
+                                    </th>
+                                    <th>
+                                        {{ trans('cruds.user.fields.lastname') }}
+                                    </th>
+                                    <th>
                                         {{ trans('cruds.user.fields.name') }}
                                     </th>
                                     <th>
@@ -37,9 +43,6 @@
                                     </th>
                                     <th>
                                         {{ trans('cruds.user.fields.email_verified_at') }}
-                                    </th>
-                                    <th>
-                                        {{ trans('cruds.user.fields.verified') }}
                                     </th>
                                     <th>
                                         {{ trans('cruds.user.fields.two_factor') }}
@@ -62,6 +65,12 @@
                                             {{ $user->id ?? '' }}
                                         </td>
                                         <td>
+                                            {{ $user->firstname ?? '' }}
+                                        </td>
+                                        <td>
+                                            {{ $user->lastname ?? '' }}
+                                        </td>
+                                        <td>
                                             {{ $user->name ?? '' }}
                                         </td>
                                         <td>
@@ -69,10 +78,6 @@
                                         </td>
                                         <td>
                                             {{ $user->email_verified_at ?? '' }}
-                                        </td>
-                                        <td>
-                                            <span style="display:none">{{ $user->verified ?? '' }}</span>
-                                            <input type="checkbox" disabled="disabled" {{ $user->verified ? 'checked' : '' }}>
                                         </td>
                                         <td>
                                             <span style="display:none">{{ $user->two_factor ?? '' }}</span>

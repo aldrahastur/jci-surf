@@ -79,6 +79,10 @@ return [
             'original_reference_helper'    => ' ',
             'jci_chapter'                  => 'JCI Chapter',
             'jci_chapter_helper'           => ' ',
+            'firstname'                    => 'Firstname',
+            'firstname_helper'             => ' ',
+            'lastname'                     => 'Lastname',
+            'lastname_helper'              => ' ',
         ],
     ],
     'auditLog' => [

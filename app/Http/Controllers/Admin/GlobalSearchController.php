@@ -10,7 +10,6 @@ class GlobalSearchController extends Controller
 {
     private $models = [
         'Category' => 'cruds.category.title',
-        'Location' => 'cruds.location.title',
         'Tag'      => 'cruds.tag.title',
         'Listing'  => 'cruds.listing.title',
         'City'     => 'cruds.city.title',

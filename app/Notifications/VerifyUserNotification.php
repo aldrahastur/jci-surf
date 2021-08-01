@@ -13,7 +13,7 @@ class VerifyUserNotification extends Notification
 
     private $user;
 
-    public function __construct(User $user)
+    public function  __construct(User $user)
     {
         $this->user = $user;
     }

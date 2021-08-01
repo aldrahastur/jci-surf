@@ -28,6 +28,22 @@
                                 </tr>
                                 <tr>
                                     <th>
+                                        {{ trans('cruds.user.fields.firstname') }}
+                                    </th>
+                                    <td>
+                                        {{ $user->firstname }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        {{ trans('cruds.user.fields.lastname') }}
+                                    </th>
+                                    <td>
+                                        {{ $user->lastname }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
                                         {{ trans('cruds.user.fields.name') }}
                                     </th>
                                     <td>
@@ -48,14 +64,6 @@
                                     </th>
                                     <td>
                                         {{ $user->email_verified_at }}
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>
-                                        {{ trans('cruds.user.fields.verified') }}
-                                    </th>
-                                    <td>
-                                        <input type="checkbox" disabled="disabled" {{ $user->verified ? 'checked' : '' }}>
                                     </td>
                                 </tr>
                                 <tr>

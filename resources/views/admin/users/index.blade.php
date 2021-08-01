@@ -29,6 +29,12 @@
                         {{ trans('cruds.user.fields.id') }}
                     </th>
                     <th>
+                        {{ trans('cruds.user.fields.firstname') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.user.fields.lastname') }}
+                    </th>
+                    <th>
                         {{ trans('cruds.user.fields.name') }}
                     </th>
                     <th>
@@ -36,9 +42,6 @@
                     </th>
                     <th>
                         {{ trans('cruds.user.fields.email_verified_at') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.user.fields.verified') }}
                     </th>
                     <th>
                         {{ trans('cruds.user.fields.two_factor') }}
@@ -106,10 +109,11 @@
     columns: [
       { data: 'placeholder', name: 'placeholder' },
 { data: 'id', name: 'id' },
+{ data: 'firstname', name: 'firstname' },
+{ data: 'lastname', name: 'lastname' },
 { data: 'name', name: 'name' },
 { data: 'email', name: 'email' },
 { data: 'email_verified_at', name: 'email_verified_at' },
-{ data: 'verified', name: 'verified' },
 { data: 'two_factor', name: 'two_factor' },
 { data: 'roles', name: 'roles.title' },
 { data: 'jci_chapter_name', name: 'jci_chapter.name' },

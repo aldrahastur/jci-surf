@@ -39,6 +39,8 @@ class User extends Authenticatable
     ];
 
     protected $fillable = [
+        'firstname',
+        'lastname',
         'name',
         'original_reference',
         'email',
@@ -82,7 +84,7 @@ class User extends Authenticatable
                     $user->roles()->attach($registrationRole);
                 }
 
-                $user->notify(new VerifyUserNotification($user));
+//                $user->notify(new VerifyUserNotification($user));
             }
         });
     }
