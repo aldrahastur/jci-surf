@@ -140,8 +140,8 @@ return [
         ],
     ],
     'taskTag' => [
-        'title'          => 'Tags',
-        'title_singular' => 'Tag',
+        'title'          => 'Tags (Tasks)',
+        'title_singular' => 'Tags (Tasks)',
         'fields'         => [
             'id'                => 'ID',
             'id_helper'         => ' ',
